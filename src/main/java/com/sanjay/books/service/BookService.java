@@ -49,16 +49,11 @@ public class BookService {
 
     public List<BookDto> searchBooks(String query) {
         query = query.toUpperCase();
-        List<Book> searchResultByIsbn =  bookRespository.findByIsbn(query);
-        List<Book> searchResultByTitle = bookRespository.findByTitle(query);
-        List<Book> searchResultByAuthor = bookRespository.findByAuthor(query);
+        List<Book> searchResultByBookParams =  bookRespository.searchBooks(query);
         List<Book> searchResultByTag = tagRepository.retrieveByTag(query);
 
         List<Book> searchResults = new ArrayList<>();
-
-        searchResults.addAll(searchResultByAuthor);
-        searchResults.addAll(searchResultByIsbn);
-        searchResults.addAll(searchResultByTitle);
+        searchResults.addAll(searchResultByBookParams);
         searchResults.addAll(searchResultByTag);
 
         List<BookDto>  response = searchResults.stream().map(x -> x.getDto()).toList();

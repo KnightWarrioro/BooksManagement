@@ -18,6 +18,17 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private @NotNull Integer id;
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
+    }
+
     private @NotNull String isbn;
 
     String author;
@@ -26,7 +37,7 @@ public class Book {
     }
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
+    @OneToMany( fetch=FetchType.EAGER,mappedBy = "book")
     private Set<Tag> tags;
 
     private @NotNull String title;
@@ -50,7 +61,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id.equals(book.id) && isbn.equals(book.isbn) && Objects.equals(author, book.author)  && title.equals(book.title) && createdDate.equals(book.createdDate);
+        return id.equals(book.id) && isbn.equals(book.isbn) && Objects.equals(author, book.author)  && title.equals(book.title);
     }
 
     @Override

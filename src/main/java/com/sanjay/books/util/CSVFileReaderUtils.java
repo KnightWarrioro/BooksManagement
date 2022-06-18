@@ -30,9 +30,11 @@ public class CSVFileReaderUtils {
         List<BookDto> books = new ArrayList<>();
         for (CSVRecord csvRecord : csvRecords) {
             List<Tag> tagList = new ArrayList<>();
-            if(csvRecord.size()>=4) {
-               tagList.addAll(Arrays.stream(csvRecord.get(3).toUpperCase().split(TAGS_DELIMITER)).map(x -> new Tag(x.toUpperCase(),1)).toList());
+            if (csvRecord.size() >= 4) {
+                tagList.addAll(Arrays.stream(csvRecord.get(3).toUpperCase().split(TAGS_DELIMITER)).map(x -> new Tag(x.toUpperCase(), 1)).toList());
             }
+            if(csvRecord.size()<3)
+                throw new IOException("Incorrect Params");
             BookDto book = BookDto.builder()
                     .author(csvRecord.get(0).toUpperCase())
                     .title(csvRecord.get(1).toUpperCase())
@@ -40,6 +42,7 @@ public class CSVFileReaderUtils {
                     .tags(tagList)
                     .build();
             books.add(book);
+
 
         }
         return books;

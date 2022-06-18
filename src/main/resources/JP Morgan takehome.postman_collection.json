@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "839d0907-bc28-467d-bba5-7e86479b0d3b",
+		"name": "JP Morgan takehome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21010604"
+	},
+	"item": [
+		{
+			"name": "upload File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/KnightWarrior/Desktop/Book/Books.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/upload/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/KnightWarrior/Desktop/Book/Books.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/search/thriller",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search",
+						"thriller"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
