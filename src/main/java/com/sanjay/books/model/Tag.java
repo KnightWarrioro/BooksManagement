@@ -37,7 +37,7 @@ public class Tag {
     }
 
     @JsonIgnore
-    @ManyToOne(fetch=FetchType.EAGER,optional = false )
+    @ManyToOne(fetch=FetchType.LAZY,optional = false )
     @JoinColumn(name = "bookId",insertable = false,updatable = false)
     Book book;
 

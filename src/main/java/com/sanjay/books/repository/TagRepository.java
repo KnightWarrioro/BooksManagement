@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface TagRepository extends JpaRepository<Tag,Long> {
 
-    @Query("SELECT b FROM Book b JOIN  Tag t  on t.bookId=b.id WHERE t.value = LOWER(:tag)")
+    @Query("SELECT b FROM Book b JOIN  Tag t  on t.bookId=b.id WHERE t.value = UPPER(:tag)")
     List<Book> retrieveByTag(@Param("tag") String tag);
 }

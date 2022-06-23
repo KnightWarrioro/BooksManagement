@@ -18,6 +18,7 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private @NotNull Integer id;
 
+    @JsonIgnore
     @Override
     public String toString() {
         return "Book{" +
@@ -33,11 +34,12 @@ public class Book {
 
     String author;
 
+    @JsonIgnore
     public Book() {
     }
 
     @JsonIgnore
-    @OneToMany( fetch=FetchType.EAGER,mappedBy = "book")
+    @OneToMany( fetch=FetchType.LAZY,mappedBy = "book")
     private Set<Tag> tags;
 
     private @NotNull String title;
@@ -45,6 +47,7 @@ public class Book {
     private @NotNull
     Date createdDate;
 
+    @JsonIgnore
     public Book(BookDto bookDto) {
         this.author = bookDto.getAuthor();
         this.title = bookDto.getTitle();
@@ -52,6 +55,8 @@ public class Book {
         this.tags = new HashSet<>(bookDto.getTags());
         this.createdDate = new Date();
     }
+
+    @JsonIgnore
     public BookDto getDto(){
         return  new BookDto(id,isbn,author,title,new ArrayList<>(tags));
     }

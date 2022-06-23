@@ -1,5 +1,6 @@
 package com.sanjay.books.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sanjay.books.model.Book;
 import com.sanjay.books.model.Tag;
 import com.sun.istack.NotNull;
@@ -26,6 +27,7 @@ public class BookDto {
         this.tags = tags;
     }
 
+    @JsonIgnore
     public Book getBook(){
 
          Book  book = new Book();

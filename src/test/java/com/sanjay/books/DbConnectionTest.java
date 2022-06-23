@@ -69,7 +69,7 @@ public class DbConnectionTest {
         b1.setAuthor("MYSELF");
         Book b2 = bookRespository.save(b1);
 
-        Tag t1 = new Tag("tagged",b2.getId());
+        Tag t1 = new Tag("TAGGED",b2.getId());
         tagRepository.save(t1);
         List<Book> books = tagRepository.retrieveByTag("TAGGED");
 
